@@ -28,6 +28,10 @@ import salonMockup from "../assets/portfolio-salon.jpg";
 import gymMockup from "../assets/portfolio-gym.jpg";
 import autoMockup from "../assets/portfolio-auto.jpg";
 import { navLinks, portfolioItems, problemCards, services } from "@/data";
+import About from "@/components/base/About/About.tsx";
+import Portfolio from "@/components/base/Portfolio/Portfolio.tsx";
+import Problem from "@/components/base/Problem/Problem.tsx";
+import Hero from "@/components/base/Hero/Hero.tsx";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -154,71 +158,10 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section className="relative flex min-h-screen flex-col justify-center px-4 pt-24 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -right-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-primary/10 blur-3xl" />
-          <div className="absolute -left-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-primary/5 blur-3xl" />
-        </div>
-
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary sm:text-base">
-            Локален уеб дизайн в Айтос
-          </p>
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-            Уебсайтове, които печелят повече клиенти за бизнеса ви в{" "}
-            <span className="text-gradient">Айтос</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Правим бързи, красиви и работещи сайтове за малки бизнеси — кафенета, салони, фитнеси,
-            бутици и сервизи. Без сложни процеси и скрити такси.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="#kontakti"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:glow"
-            >
-              Безплатна консултация
-              <ArrowRight className="h-5 w-5" />
-            </a>
-            <a
-              href="#raboti"
-              className="inline-flex items-center justify-center rounded-full border border-border bg-secondary px-8 py-4 text-base font-semibold text-secondary-foreground transition-colors hover:bg-accent"
-            >
-              Вижте примери
-            </a>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Problem / Value section */}
-      <section className="px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12 max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Къде се задъхва онлайн присъствието ви?
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Повечето местни бизнеси губят клиенти, защото не изглеждат добре онлайн. Ние поправяме
-              точно това.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {problemCards.map((card) => (
-              <div
-                key={card.title}
-                className="card-hover rounded-2xl border border-border bg-card p-6 sm:p-8"
-              >
-                <div className="mb-5 inline-flex rounded-xl bg-primary/10 p-3 text-primary">
-                  <card.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold text-card-foreground">{card.title}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{card.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Problem />
 
       {/* Services */}
       <section id="uslugi" className="px-4 py-24 sm:px-6 lg:px-8">
@@ -252,120 +195,10 @@ function Index() {
       </section>
 
       {/* Portfolio */}
-      <section id="raboti" className="px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-16 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">Примери</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Работи за местни бизнеси
-            </h2>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {portfolioItems.map((item) => (
-              <div
-                key={item.name}
-                className="card-hover group overflow-hidden rounded-2xl border border-border bg-card"
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={`Сайт за ${item.name}`}
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-semibold text-card-foreground">{item.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.result}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Portfolio />
 
       {/* About */}
-      <section id="za-nas" className="px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-primary">За нас</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Двама души, една цел — повече клиенти за вашия бизнес
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                Ние сме малък екип от Айтос, който обича да помага на местния бизнес да расте
-                онлайн. Работим лично с всеки клиент, обясняваме всичко на разбираем език и не
-                продаваме услуги, които не са ви нужни.
-              </p>
-              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                Разбираме спецификата на града ни — знаем как клиентите в Айтос търсят услуги и как
-                да сте там, където те първо поглеждат: в Google и на телефона им.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-6">
-                <div className="flex items-center gap-3">
-                  <div className="inline-flex rounded-full bg-primary/10 p-2.5 text-primary">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <span className="text-muted-foreground">Базирани в Айтос, България</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="inline-flex rounded-full bg-primary/10 p-2.5 text-primary">
-                    <Users className="h-5 w-5" />
-                  </div>
-                  <span className="text-muted-foreground">Личен подход, двама души екип</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 -z-10 rounded-3xl bg-primary/10 blur-3xl" />
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-border bg-card p-6">
-                  <div className="mb-4 inline-flex rounded-full bg-primary/10 p-3 text-primary">
-                    <Monitor className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-semibold text-card-foreground">Дизайн и разработка</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Чист код, бързи сайтове и дизайн, който продава.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border bg-card p-6">
-                  <div className="mb-4 inline-flex rounded-full bg-primary/10 p-3 text-primary">
-                    <Search className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-semibold text-card-foreground">Локална видимост</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    SEO и Google Business оптимизация за Айтос.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border bg-card p-6">
-                  <div className="mb-4 inline-flex rounded-full bg-primary/10 p-3 text-primary">
-                    <CalendarDays className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-semibold text-card-foreground">Автоматизация</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Резервации, запитвания и отзиви — без ръчна работа.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-border bg-card p-6">
-                  <div className="mb-4 inline-flex rounded-full bg-primary/10 p-3 text-primary">
-                    <Phone className="h-6 w-6" />
-                  </div>
-                  <h3 className="font-semibold text-card-foreground">Поддръжка</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Винаги на разположение, когато имате нужда от помощ.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <About />
 
       {/* Contact */}
       <section id="kontakti" className="px-4 py-24 sm:px-6 lg:px-8">
