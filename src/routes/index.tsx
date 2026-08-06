@@ -1,5 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
+import { sendContactMessage } from "../lib/contact.functions";
+
 import {
   Monitor,
   QrCode,
@@ -136,12 +139,29 @@ function Index() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const sendContact = useServerFn(sendContactMessage);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setFormState({ name: "", business: "", message: "" });
+    setSending(true);
+    setError(null);
+    try {
+      await sendContact({ data: formState });
+      setSubmitted(true);
+      setFormState({ name: "", business: "", message: "" });
+    } catch (err) {
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : "Възникна грешка. Опитайте отново или ни позвънете.",
+      );
+    } finally {
+      setSending(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -551,12 +571,19 @@ function Index() {
                       placeholder="Разкажете ни накратко какъв сайт търсите..."
                     />
                   </div>
+                  {error && (
+                    <p className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                      {error}
+                    </p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full rounded-full bg-primary px-6 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:glow"
+                    disabled={sending}
+                    className="w-full rounded-full bg-primary px-6 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:glow disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    Изпратете запитване
+                    {sending ? "Изпращане..." : "Изпратете запитване"}
                   </button>
+
                 </form>
               )}
             </div>
