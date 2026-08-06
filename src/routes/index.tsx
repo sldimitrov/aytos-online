@@ -16,7 +16,6 @@ import {
   Phone,
   Mail,
   Instagram,
-  Facebook,
   ArrowRight,
   Menu,
   X,
@@ -32,20 +31,20 @@ import autoMockup from "../assets/portfolio-auto.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Уеб дизайн Айтос | Локални сайтове за малък бизнес" },
+      { title: "Айтос Онлайн | Правим бизнеса ви видим" },
       {
         name: "description",
         content:
-          "Дизайн на уебсайтове, Google отзиви, онлайн резервации и SEO за малки бизнеси в Айтос и региона. Безплатна консултация.",
+          "Правим бързи, красиви и работещи сайтове за малки бизнеси — кафенета, салони, фитнеси, бутици и сервизи в Айтос. Без сложни процеси и скрити такси. Безплатна консултация.",
       },
       {
         property: "og:title",
-        content: "Уеб дизайн Айтос | Локални сайтове за малък бизнес",
+        content: "Айтос Онлайн | Правим бизнеса ви видим",
       },
       {
         property: "og:description",
         content:
-          "Дизайн на уебсайтове, Google отзиви, онлайн резервации и SEO за малки бизнеси в Айтос и региона.",
+          "Правим бързи, красиви и работещи сайтове за малки бизнеси — кафенета, салони, фитнеси, бутици и сервизи в Айтос.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -175,8 +174,8 @@ function Index() {
       {/* Navigation */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <Link to="/" className="text-lg font-bold tracking-tight text-foreground">
-            Айтос<span className="text-primary">Online</span>
+          <Link to="/" className="font-display text-lg font-bold tracking-tight text-foreground">
+            Айтос <span className="text-primary">Онлайн</span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -467,22 +466,22 @@ function Index() {
 
               <div className="mt-10 space-y-5">
                 <a
-                  href="tel:+359000000000"
+                  href="tel:+359876533802"
                   className="flex items-center gap-4 text-muted-foreground transition-colors hover:text-foreground"
                 >
                   <div className="inline-flex rounded-full bg-primary/10 p-2.5 text-primary">
                     <Phone className="h-5 w-5" />
                   </div>
-                  <span className="font-medium">+359 00 000 0000</span>
+                  <span className="font-medium">+359 876 533 802</span>
                 </a>
                 <a
-                  href="mailto:hello@aytosweb.bg"
+                  href="mailto:aytosonline@gmail.com"
                   className="flex items-center gap-4 text-muted-foreground transition-colors hover:text-foreground"
                 >
                   <div className="inline-flex rounded-full bg-primary/10 p-2.5 text-primary">
                     <Mail className="h-5 w-5" />
                   </div>
-                  <span className="font-medium">hello@aytosweb.bg</span>
+                  <span className="font-medium">aytosonline@gmail.com</span>
                 </a>
                 <div className="flex items-center gap-4 text-muted-foreground">
                   <div className="inline-flex rounded-full bg-primary/10 p-2.5 text-primary">
@@ -494,22 +493,13 @@ function Index() {
 
               <div className="mt-10 flex gap-4">
                 <a
-                  href="https://instagram.com"
+                  href="https://instagram.com/aytos.online"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-5 py-2.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-accent"
                 >
                   <Instagram className="h-4 w-4" />
-                  Instagram
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-5 py-2.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-accent"
-                >
-                  <Facebook className="h-4 w-4" />
-                  Facebook
+                  @aytos.online
                 </a>
               </div>
             </div>
@@ -601,30 +591,21 @@ function Index() {
       {/* Footer */}
       <footer className="border-t border-border px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
-          <Link to="/" className="text-lg font-bold tracking-tight text-foreground">
-            Айтос<span className="text-primary">Web</span>
+          <Link to="/" className="font-display text-lg font-bold tracking-tight text-foreground">
+            Айтос <span className="text-primary">Онлайн</span>
           </Link>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Aytos Online. Всички права запазени.
+            © {new Date().getFullYear()} Айтос Онлайн. Всички права запазени.
           </p>
           <div className="flex gap-4">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/aytos.online"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground transition-colors hover:text-primary"
               aria-label="Instagram"
             >
               <Instagram className="h-5 w-5" />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-primary"
-              aria-label="Facebook"
-            >
-              <Facebook className="h-5 w-5" />
             </a>
           </div>
         </div>

@@ -77,17 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Уеб дизайн Айтос | Локални сайтове за малък бизнес" },
+      { title: "Айтос Онлайн | Правим бизнеса ви видим" },
       {
         name: "description",
         content:
-          "Дизайн на уебсайтове, Google отзиви, онлайн резервации и SEO за малки бизнеси в Айтос и региона. Безплатна консултация.",
+          "Правим бързи, красиви и работещи сайтове за малки бизнеси — кафенета, салони, фитнеси, бутици и сервизи в Айтос. Без сложни процеси и скрити такси. Безплатна консултация.",
       },
-      { property: "og:title", content: "Уеб дизайн Айтос | Локални сайтове за малък бизнес" },
+      { property: "og:title", content: "Айтос Онлайн | Правим бизнеса ви видим" },
       {
         property: "og:description",
         content:
-          "Дизайн на уебсайтове, Google отзиви, онлайн резервации и SEO за малки бизнеси в Айтос и региона.",
+          "Правим бързи, красиви и работещи сайтове за малки бизнеси — кафенета, салони, фитнеси, бутици и сервизи в Айтос.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -101,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],

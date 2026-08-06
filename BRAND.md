@@ -75,7 +75,7 @@ Use these as tone reference when generating new copy (Instagram captions, outrea
 
 ## 6. Contact & Handles
 
-- Website: aytosonline.com
+- Website: aytos.online
 - Instagram: @aytos.online
-- Email: hello@aytosonline.com
+- Email: aytosonline@gmail.com
 - Location: Aytos, Bulgaria
