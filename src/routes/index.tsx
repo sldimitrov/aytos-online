@@ -571,12 +571,19 @@ function Index() {
                       placeholder="Разкажете ни накратко какъв сайт търсите..."
                     />
                   </div>
+                  {error && (
+                    <p className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                      {error}
+                    </p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full rounded-full bg-primary px-6 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:glow"
+                    disabled={sending}
+                    className="w-full rounded-full bg-primary px-6 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:glow disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    Изпратете запитване
+                    {sending ? "Изпращане..." : "Изпратете запитване"}
                   </button>
+
                 </form>
               )}
             </div>
