@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
+import emailjs from "@emailjs/browser";
 import { useEffect, useState } from "react";
-import { sendContactMessage } from "../lib/contact.functions";
 
 import {
   Monitor,
@@ -62,6 +61,8 @@ function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formState, setFormState] = useState({
     name: "",
+    email: "",
+    phone: "",
     business: "",
     message: "",
   });
@@ -69,7 +70,6 @@ function Index() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showConsultPopup, setShowConsultPopup] = useState(false);
-  const sendContact = useServerFn(sendContactMessage);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConsultPopup(true), 4000);
@@ -80,15 +80,58 @@ function Index() {
     e.preventDefault();
     setSending(true);
     setError(null);
+
+    const serviceId = import.meta.env["VITE_EMAILJS_SERVICE_ID"];
+    const templateId = import.meta.env["VITE_EMAILJS_TEMPLATE_ID"];
+    const confirmationTemplateId = import.meta.env["VITE_EMAILJS_CONFIRMATION_TEMPLATE_ID"];
+    const publicKey = import.meta.env["VITE_EMAILJS_PUBLIC_KEY"];
+
+    if (!serviceId || !templateId || !publicKey) {
+      setError("Имейл услугата не е конфигурирана.");
+      setSending(false);
+      return;
+    }
+
     try {
-      await sendContact({ data: formState });
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formState.name,
+          email: formState.email,
+          reply_to: formState.email,
+          phone: formState.phone,
+          business: formState.business,
+          message: formState.message,
+        },
+        { publicKey },
+      );
+
+      if (confirmationTemplateId) {
+        try {
+          await emailjs.send(
+            serviceId,
+            confirmationTemplateId,
+            {
+              to_name: formState.name,
+              to_email: formState.email,
+              business: formState.business,
+              message: formState.message,
+            },
+            { publicKey },
+          );
+        } catch (confirmationErr) {
+          console.error("Confirmation email failed:", confirmationErr);
+        }
+      }
+
       setSubmitted(true);
-      setFormState({ name: "", business: "", message: "" });
+      setFormState({ name: "", email: "", phone: "", business: "", message: "" });
     } catch (err) {
       setError(
         err instanceof Error && err.message
           ? err.message
-          : "Възникна грешка. Опитайте отново или ни позвънете.",
+          : "Съобщението не беше изпратено. Опитайте отново или ни позвънете.",
       );
     } finally {
       setSending(false);
@@ -291,6 +334,41 @@ function Index() {
                       className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                       placeholder="Иван Иванов"
                     />
+                  </div>
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="mb-2 block text-sm font-medium text-card-foreground"
+                      >
+                        Имейл
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        required
+                        value={formState.email}
+                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                        className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        placeholder="ivan@example.com"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="mb-2 block text-sm font-medium text-card-foreground"
+                      >
+                        Телефон <span className="text-muted-foreground">(по избор)</span>
+                      </label>
+                      <input
+                        id="phone"
+                        type="tel"
+                        value={formState.phone}
+                        onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                        className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        placeholder="+359 88 000 0000"
+                      />
+                    </div>
                   </div>
                   <div>
                     <label
