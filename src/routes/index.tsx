@@ -54,8 +54,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-
-
 function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formState, setFormState] = useState({
@@ -92,7 +90,6 @@ function Index() {
       setSending(false);
     }
   };
-
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -201,8 +198,8 @@ function Index() {
               Къде се задъхва онлайн присъствието ви?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Повечето местни бизнеси губят клиенти, защото не изглеждат добре онлайн. Ние
-              поправяме точно това.
+              Повечето местни бизнеси губят клиенти, защото не изглеждат добре онлайн. Ние поправяме
+              точно това.
             </p>
           </div>
 
@@ -258,9 +255,7 @@ function Index() {
       <section id="raboti" className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-              Примери
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">Примери</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Работи за местни бизнеси
             </h2>
@@ -297,9 +292,7 @@ function Index() {
         <div className="mx-auto max-w-6xl">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-                За нас
-              </p>
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary">За нас</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                 Двама души, една цел — повече клиенти за вашия бизнес
               </h2>
@@ -438,9 +431,7 @@ function Index() {
                   <h3 className="text-xl font-semibold text-card-foreground">
                     Благодарим ви за запитването!
                   </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Ще се свържем с вас до 24 часа.
-                  </p>
+                  <p className="mt-2 text-muted-foreground">Ще се свържем с вас до 24 часа.</p>
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
@@ -452,7 +443,10 @@ function Index() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label htmlFor="name" className="mb-2 block text-sm font-medium text-card-foreground">
+                    <label
+                      htmlFor="name"
+                      className="mb-2 block text-sm font-medium text-card-foreground"
+                    >
                       Вашето име
                     </label>
                     <input
@@ -466,7 +460,10 @@ function Index() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="business" className="mb-2 block text-sm font-medium text-card-foreground">
+                    <label
+                      htmlFor="business"
+                      className="mb-2 block text-sm font-medium text-card-foreground"
+                    >
                       Бизнес / дейност
                     </label>
                     <input
@@ -480,7 +477,10 @@ function Index() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="mb-2 block text-sm font-medium text-card-foreground">
+                    <label
+                      htmlFor="message"
+                      className="mb-2 block text-sm font-medium text-card-foreground"
+                    >
                       Съобщение
                     </label>
                     <textarea
@@ -505,7 +505,6 @@ function Index() {
                   >
                     {sending ? "Изпращане..." : "Изпратете запитване"}
                   </button>
-
                 </form>
               )}
             </div>
@@ -543,9 +542,7 @@ function Index() {
             <MessageCircle className="h-5 w-5" />
           </div>
           <div className="flex-1">
-            <p className="text-sm font-semibold text-card-foreground">
-              Искате повече клиенти?
-            </p>
+            <p className="text-sm font-semibold text-card-foreground">Искате повече клиенти?</p>
             <p className="mt-1 text-sm text-muted-foreground">
               Получете безплатна консултация за вашия бизнес.
             </p>

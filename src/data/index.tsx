@@ -32,7 +32,6 @@ export const problemCards = [
   },
 ];
 
-
 export const services = [
   {
     icon: Monitor,
@@ -55,8 +54,7 @@ export const services = [
   {
     icon: Search,
     title: "SEO основи",
-    description:
-      "Оптимизация, за да ви намират в Google при търсене в Айтос и околността.",
+    description: "Оптимизация, за да ви намират в Google при търсене в Айтос и околността.",
   },
 ];
 
