@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sendContactMessage } from "../lib/contact.functions";
 
 import {
@@ -21,6 +21,7 @@ import {
   Menu,
   X,
   CheckCircle2,
+  MessageCircle,
 } from "lucide-react";
 
 import cafeMockup from "../assets/portfolio-cafe.jpg";
@@ -141,7 +142,13 @@ function Index() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showConsultPopup, setShowConsultPopup] = useState(false);
   const sendContact = useServerFn(sendContactMessage);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowConsultPopup(true), 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -169,7 +176,7 @@ function Index() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link to="/" className="text-lg font-bold tracking-tight text-foreground">
-            Айтос<span className="text-primary">Web</span>
+            Айтос<span className="text-primary">Online</span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -598,7 +605,7 @@ function Index() {
             Айтос<span className="text-primary">Web</span>
           </Link>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} АйтосWeb. Всички права запазени.
+            © {new Date().getFullYear()} Aytos Online. Всички права запазени.
           </p>
           <div className="flex gap-4">
             <a
@@ -622,6 +629,38 @@ function Index() {
           </div>
         </div>
       </footer>
+
+      {/* Floating consultation CTA */}
+      {showConsultPopup && (
+        <div className="fixed bottom-4 right-4 z-50 flex max-w-xs animate-in fade-in slide-in-from-bottom-4 items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-2xl sm:bottom-6 sm:right-6">
+          <div className="inline-flex shrink-0 rounded-full bg-primary/10 p-2.5 text-primary">
+            <MessageCircle className="h-5 w-5" />
+          </div>
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-card-foreground">
+              Искате повече клиенти?
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Получете безплатна консултация за вашия бизнес.
+            </p>
+            <a
+              href="#kontakti"
+              onClick={() => setShowConsultPopup(false)}
+              className="mt-3 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Безплатна консултация
+            </a>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowConsultPopup(false)}
+            aria-label="Затвори"
+            className="shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
