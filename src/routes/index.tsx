@@ -136,12 +136,29 @@ function Index() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const sendContact = useServerFn(sendContactMessage);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setFormState({ name: "", business: "", message: "" });
+    setSending(true);
+    setError(null);
+    try {
+      await sendContact({ data: formState });
+      setSubmitted(true);
+      setFormState({ name: "", business: "", message: "" });
+    } catch (err) {
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : "Възникна грешка. Опитайте отново или ни позвънете.",
+      );
+    } finally {
+      setSending(false);
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-background text-foreground">
