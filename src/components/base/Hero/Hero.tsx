@@ -17,8 +17,8 @@ export default function Hero() {
           <span className="text-gradient">Айтос</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-          Правим бързи, красиви и работещи сайтове за малки бизнеси — кафенета, салони, фитнеси,
-          бутици и сервизи. Без сложни процеси и скрити такси.
+          Правим бързи, красиви и работещи сайтове за малък бизнес — кафенета, фризьорски салони,
+          фитнеси, автосервизи и строителни фирми. Без сложни процеси и скрити такси.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a

@@ -24,7 +24,7 @@ export default function Portfolio() {
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
                   src={item.coverImage}
-                  alt={`Сайт за ${item.name}`}
+                  alt={item.seoTitle}
                   width={1024}
                   height={768}
                   loading="lazy"

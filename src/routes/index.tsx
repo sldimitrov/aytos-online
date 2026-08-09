@@ -24,6 +24,7 @@ import {
 
 import { navLinks, problemCards, services } from "@/data";
 import About from "@/components/base/About/About.tsx";
+import FAQ from "@/components/base/FAQ/FAQ.tsx";
 import Portfolio from "@/components/base/Portfolio/Portfolio.tsx";
 import Problem from "@/components/base/Problem/Problem.tsx";
 import Hero from "@/components/base/Hero/Hero.tsx";
@@ -31,15 +32,15 @@ import Hero from "@/components/base/Hero/Hero.tsx";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Айтос Онлайн | Правим бизнеса ви видим" },
+      { title: "Уебсайтове за бизнес в Айтос | Айтос Онлайн" },
       {
         name: "description",
         content:
-          "Правим бързи, красиви и работещи сайтове за малки бизнеси — кафенета, салони, фитнеси, бутици и сервизи в Айтос. Без сложни процеси и скрити такси. Безплатна консултация.",
+          "Изработваме уебсайтове за малък бизнес в Айтос — кафенета, салони, фитнеси, автосервизи и строителни фирми. Google Business Profile оптимизация и QR код.",
       },
       {
         property: "og:title",
-        content: "Айтос Онлайн | Правим бизнеса ви видим",
+        content: "Уебсайтове за бизнес в Айтос | Айтос Онлайн",
       },
       {
         property: "og:description",
@@ -238,6 +239,9 @@ function Index() {
 
       {/* About */}
       <About />
+
+      {/* FAQ */}
+      <FAQ />
 
       {/* Contact */}
       <section id="kontakti" className="px-4 py-24 sm:px-6 lg:px-8">

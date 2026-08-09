@@ -4,6 +4,7 @@ export const navLinks = [
   { label: "Услуги", href: "#uslugi" },
   { label: "Работи", href: "#raboti" },
   { label: "За нас", href: "#za-nas" },
+  { label: "Въпроси", href: "#vaprosi" },
   { label: "Контакти", href: "#kontakti" },
 ];
 

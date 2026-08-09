@@ -26,6 +26,12 @@ export interface CaseStudy {
   testimonial: Testimonial;
   coverImage: string;
   gallery: string[];
+  /** Keyword-pattern page title, e.g. "Уебсайт за строителна фирма — Burgas Frame" */
+  seoTitle: string;
+  /** ~150-160 char meta description for this case study page */
+  metaDescription: string;
+  /** Alt text per gallery image, same order as `gallery` */
+  galleryAlt: string[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -57,6 +63,14 @@ export const caseStudies: CaseStudy[] = [
     },
     coverImage: burgasFrameCover,
     gallery: [burgasFrame1, burgasFrame2, burgasFrame3],
+    seoTitle: "Уебсайт за строителна фирма — Burgas Frame",
+    metaDescription:
+      "Уебсайт за Burgas Frame — строителна фирма за дървени къщи в Бургаски регион. Калкулатор за цена, който докара над 50 запитвания.",
+    galleryAlt: [
+      "Завършена дървена къща, изградена от Burgas Frame",
+      "Дървена конструкция на къща в процес на изграждане от Burgas Frame",
+      "Проект на дървена къща на Burgas Frame — външен изглед",
+    ],
   },
   {
     slug: "gutter-matter",
@@ -84,6 +98,14 @@ export const caseStudies: CaseStudy[] = [
     },
     coverImage: gutterMatterCover,
     gallery: [gutterMatterSite, gutterMatter1, gutterMatter2],
+    seoTitle: "Уебсайт за услуга по почистване на улуци — Gutter Matter",
+    metaDescription:
+      "Уебсайт за Gutter Matter — услуга за почистване на улуци в Тънбридж Уелс, Великобритания. Контактна форма, която докара 10+ запитвания.",
+    galleryAlt: [
+      "Начална страница на сайта на Gutter Matter",
+      "Преди и след снимка от почистване на улук от Gutter Matter",
+      "Работа по почистване на улук, извършена от Gutter Matter",
+    ],
   },
   {
     slug: "ivan-rusev",
@@ -111,6 +133,14 @@ export const caseStudies: CaseStudy[] = [
     },
     coverImage: ivanRusevCover,
     gallery: [ivanRusev1, ivanRusev2, ivanRusev3],
+    seoTitle: "Личен сайт за спортист — Иван Русев",
+    metaDescription:
+      "Личен сайт за Иван Русев — downhill колоездач. Резултати от състезания, спонсорска страница и галерия, довели до нов спонсор.",
+    galleryAlt: [
+      "Иван Русев на зимно състезание по колоездене",
+      "Иван Русев със спортния директор на UAE Team Emirates Mauro Gianetti",
+      "Оборудване и рама на downhill велосипед на Иван Русев",
+    ],
   },
 ];
 

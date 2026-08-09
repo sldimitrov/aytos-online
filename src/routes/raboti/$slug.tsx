@@ -11,10 +11,10 @@ export const Route = createFileRoute("/raboti/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.name} | Айтос Онлайн` },
-          { name: "description", content: loaderData.cardResult },
-          { property: "og:title", content: `${loaderData.name} | Айтос Онлайн` },
-          { property: "og:description", content: loaderData.cardResult },
+          { title: `${loaderData.seoTitle} | Айтос Онлайн` },
+          { name: "description", content: loaderData.metaDescription },
+          { property: "og:title", content: `${loaderData.seoTitle} | Айтос Онлайн` },
+          { property: "og:description", content: loaderData.metaDescription },
           { property: "og:type", content: "article" },
         ]
       : [],
@@ -91,7 +91,7 @@ function CaseStudyPage() {
         <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-border">
           <img
             src={caseStudy.coverImage}
-            alt={`${caseStudy.name} — начална страница`}
+            alt={`${caseStudy.seoTitle} — начална страница на сайта`}
             className="h-full w-full object-cover"
           />
         </div>
@@ -146,7 +146,7 @@ function CaseStudyPage() {
                 >
                   <img
                     src={image}
-                    alt={`${caseStudy.name} — снимка ${index + 1}`}
+                    alt={caseStudy.galleryAlt[index] ?? `${caseStudy.name} — снимка ${index + 1}`}
                     loading="lazy"
                     className="h-full w-full object-cover"
                   />
