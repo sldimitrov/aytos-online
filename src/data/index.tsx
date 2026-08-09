@@ -1,8 +1,4 @@
 import { CalendarDays, HelpCircle, Monitor, QrCode, RefreshCw, Search, Star } from "lucide-react";
-import cafeMockup from "@/assets/portfolio-cafe.jpg";
-import salonMockup from "@/assets/portfolio-salon.jpg";
-import gymMockup from "@/assets/portfolio-gym.jpg";
-import autoMockup from "@/assets/portfolio-auto.jpg";
 
 export const navLinks = [
   { label: "Услуги", href: "#uslugi" },
@@ -58,25 +54,5 @@ export const services = [
   },
 ];
 
-export const portfolioItems = [
-  {
-    image: cafeMockup,
-    name: "Кафене Айтос",
-    result: "Сайт + меню; +40% запитвания за 2 месеца",
-  },
-  {
-    image: salonMockup,
-    name: "Салон за красота Елеганс",
-    result: "Онлайн резервации; спестени 10+ часа телефонни обаждания седмично",
-  },
-  {
-    image: gymMockup,
-    name: "Фитнес Айтос Спорт",
-    result: "Нов сайт с график; 30% повече посещения от Google",
-  },
-  {
-    image: autoMockup,
-    name: "Автосервиз Мотор",
-    result: "Google отзиви + QR; рейтинг от 3.8 на 4.7 за 3 месеца",
-  },
-];
+export { caseStudies, getCaseStudyBySlug } from "./caseStudies";
+export type { CaseStudy, Testimonial } from "./caseStudies";

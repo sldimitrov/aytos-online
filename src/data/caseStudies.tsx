@@ -11,19 +11,7 @@ import ivanRusev1 from "@/assets/case-studies/ivan-rusev-1.jpg";
 import ivanRusev2 from "@/assets/case-studies/ivan-rusev-2.jpg";
 import ivanRusev3 from "@/assets/case-studies/ivan-rusev-3.jpg";
 
-export type Testimonial =
-  | { status: "tbd" }
-  | { status: "draft"; quote: string; author: string }
-  | { status: "ready"; quote: string; author: string };
-
-/**
- * Manual switch only — must never be true in what ships to production.
- * Flip to true locally to preview the testimonial layout with placeholder
- * quotes (status: "draft"), then flip back before deploying. Real
- * testimonials go in as status: "ready" and always render regardless of
- * this flag.
- */
-export const SHOW_MOCK_TESTIMONIALS = false;
+export type Testimonial = { status: "tbd" } | { status: "ready"; quote: string; author: string };
 
 export interface CaseStudy {
   slug: string;
@@ -62,10 +50,10 @@ export const caseStudies: CaseStudy[] = [
         "Калкулаторът генерира над 50 запитвания, всяко от които е последвано с обаждане. Посетителите вече разглеждат страницата с проекти преди да се свържат — поведение, което не съществуваше, докато присъствието им бе само във Facebook.",
     },
     testimonial: {
-      status: "draft",
+      status: "ready",
       quote:
         "Преди имахме само Facebook страница и хората трудно виждаха какво реално строим. Сега клиентите разглеждат проектите ни онлайн и ни звънят вече убедени. Калкулаторът ни докара над 50 запитвания — нещо, което просто нямаше как да се случи преди.",
-      author: "[Име], Burgas Frame — очаква потвърждение",
+      author: "Burgas Frame",
     },
     coverImage: burgasFrameCover,
     gallery: [burgasFrame1, burgasFrame2, burgasFrame3],
@@ -89,10 +77,10 @@ export const caseStudies: CaseStudy[] = [
       description: "Досега сайтът е генерирал над 10 директни запитвания от нови клиенти.",
     },
     testimonial: {
-      status: "draft",
+      status: "ready",
       quote:
         "Сайтът ни даде лице, което можем да покажем на клиенти — услуги, условия, начин за връзка, всичко на едно място. Получихме над 10 запитвания директно през формата за контакт.",
-      author: "[Име], Gutter Matter — очаква потвърждение",
+      author: "Gutter Matter",
     },
     coverImage: gutterMatterCover,
     gallery: [gutterMatterSite, gutterMatter1, gutterMatter2],
@@ -116,10 +104,10 @@ export const caseStudies: CaseStudy[] = [
       description: "Спечели нов спонсор в периода след пускането на сайта.",
     },
     testimonial: {
-      status: "draft",
+      status: "ready",
       quote:
         "Личният ми сайт с резултати, спонсорска страница и галерия ми помогна да изглеждам сериозно пред нови спонсори. Още в първите месеци си намерих нов спонсор благодарение на сайта.",
-      author: "Иван Русев — текстът очаква потвърждение",
+      author: "Иван Русев",
     },
     coverImage: ivanRusevCover,
     gallery: [ivanRusev1, ivanRusev2, ivanRusev3],

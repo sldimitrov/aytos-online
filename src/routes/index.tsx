@@ -22,11 +22,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-import cafeMockup from "../assets/portfolio-cafe.jpg";
-import salonMockup from "../assets/portfolio-salon.jpg";
-import gymMockup from "../assets/portfolio-gym.jpg";
-import autoMockup from "../assets/portfolio-auto.jpg";
-import { navLinks, portfolioItems, problemCards, services } from "@/data";
+import { navLinks, problemCards, services } from "@/data";
 import About from "@/components/base/About/About.tsx";
 import Portfolio from "@/components/base/Portfolio/Portfolio.tsx";
 import Problem from "@/components/base/Problem/Problem.tsx";

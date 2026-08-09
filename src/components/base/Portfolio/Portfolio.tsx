@@ -1,4 +1,6 @@
-import { portfolioItems } from "@/data";
+import { Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import { caseStudies } from "@/data";
 
 export default function Portfolio() {
   return (
@@ -7,31 +9,43 @@ export default function Portfolio() {
         <div className="mb-16 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">Примери</p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Работи за местни бизнеси
+            Работи за реални бизнеси
           </h2>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {portfolioItems.map((item) => (
-            <div
-              key={item.name}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {caseStudies.map((item) => (
+            <Link
+              key={item.slug}
+              to="/raboti/$slug"
+              params={{ slug: item.slug }}
               className="card-hover group overflow-hidden rounded-2xl border border-border bg-card"
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <img
-                  src={item.image}
+                  src={item.coverImage}
                   alt={`Сайт за ${item.name}`}
                   width={1024}
                   height={768}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <span className="absolute left-3 top-3 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur-sm">
+                  {item.clientType === "paid" ? "Клиент" : "Личен проект"}
+                </span>
               </div>
               <div className="p-5">
-                <h3 className="font-semibold text-card-foreground">{item.name}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.result}</p>
+                <p className="text-xs font-medium uppercase tracking-wide text-primary">
+                  {item.category}
+                </p>
+                <h3 className="mt-1.5 font-semibold text-card-foreground">{item.name}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.cardResult}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                  Виж случая
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,12 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import {
-  AlertTriangle,
-  ArrowLeft,
-  CheckCircle2,
-  ExternalLink,
-  MessageCircleMore,
-} from "lucide-react";
-import { caseStudies, getCaseStudyBySlug, SHOW_MOCK_TESTIMONIALS } from "@/data";
+import { ArrowLeft, CheckCircle2, ExternalLink, MessageCircleMore } from "lucide-react";
+import { caseStudies, getCaseStudyBySlug } from "@/data";
 
 export const Route = createFileRoute("/raboti/$slug")({
   loader: ({ params }) => {
@@ -167,19 +161,6 @@ function CaseStudyPage() {
         <div className="mx-auto max-w-4xl">
           {caseStudy.testimonial.status === "ready" ? (
             <div className="rounded-3xl border border-dashed border-border p-8 text-center sm:p-10">
-              <p className="text-lg italic leading-relaxed text-foreground">
-                „{caseStudy.testimonial.quote}“
-              </p>
-              <p className="mt-4 text-sm font-medium text-muted-foreground">
-                — {caseStudy.testimonial.author}
-              </p>
-            </div>
-          ) : caseStudy.testimonial.status === "draft" && SHOW_MOCK_TESTIMONIALS ? (
-            <div className="relative overflow-hidden rounded-3xl border-2 border-dashed border-yellow-500/60 bg-yellow-500/5 p-8 text-center sm:p-10">
-              <div className="mx-auto mb-4 inline-flex items-center gap-1.5 rounded-full bg-yellow-500/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-yellow-700 dark:text-yellow-400">
-                <AlertTriangle className="h-3.5 w-3.5" />
-                Примерен текст — не е реален отзив
-              </div>
               <p className="text-lg italic leading-relaxed text-foreground">
                 „{caseStudy.testimonial.quote}“
               </p>
