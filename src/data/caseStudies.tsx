@@ -1,15 +1,16 @@
-import burgasFrameCover from "@/assets/case-studies/burgas-frame-cover.jpg";
-import burgasFrame1 from "@/assets/case-studies/burgas-frame-1.jpg";
-import burgasFrame2 from "@/assets/case-studies/burgas-frame-2.jpg";
-import burgasFrame3 from "@/assets/case-studies/burgas-frame-3.jpg";
-import gutterMatterCover from "@/assets/case-studies/gutter-matter-cover.jpg";
-import gutterMatterSite from "@/assets/case-studies/gutter-matter-site.jpg";
-import gutterMatter1 from "@/assets/case-studies/gutter-matter-1.jpg";
-import gutterMatter2 from "@/assets/case-studies/gutter-matter-2.jpg";
-import ivanRusevCover from "@/assets/case-studies/ivan-rusev-cover.jpg";
-import ivanRusev1 from "@/assets/case-studies/ivan-rusev-1.jpg";
-import ivanRusev2 from "@/assets/case-studies/ivan-rusev-2.jpg";
-import ivanRusev3 from "@/assets/case-studies/ivan-rusev-3.jpg";
+import burgasFrameCover from "@/assets/case-studies/burgas-frame-cover.png";
+import burgasFrame2 from "@/assets/case-studies/burgas-frame-2.png";
+import burgasFrame3 from "@/assets/case-studies/burgas-frame-3.png";
+import burgasFrame4 from "@/assets/case-studies/burgas-frame-4.png";
+import gutterMatterCover from "@/assets/case-studies/gutter-matter-cover.png";
+import gutterMatter1 from "@/assets/case-studies/gutter-matter-1.png";
+import gutterMatter2 from "@/assets/case-studies/gutter-matter-2.png";
+import gutterMatter3 from "@/assets/case-studies/gutter-matter-3.png";
+import ivanRusevCover from "@/assets/case-studies/ivan-rusev-cover.png";
+import ivanRusev1 from "@/assets/case-studies/ivan-rusev-1.png";
+import ivanRusev2 from "@/assets/case-studies/ivan-rusev-2.png";
+import ivanRusev3 from "@/assets/case-studies/ivan-rusev-3.png";
+import ivanRusev4 from "@/assets/case-studies/ivan-rusev-4.png";
 
 export type Testimonial = { status: "tbd" } | { status: "ready"; quote: string; author: string };
 
@@ -62,7 +63,7 @@ export const caseStudies: CaseStudy[] = [
       author: "Burgas Frame",
     },
     coverImage: burgasFrameCover,
-    gallery: [burgasFrame1, burgasFrame2, burgasFrame3],
+    gallery: [burgasFrame2, burgasFrame3, burgasFrame4],
     seoTitle: "Уебсайт за строителна фирма — Burgas Frame",
     metaDescription:
       "Уебсайт за Burgas Frame — строителна фирма за дървени къщи в Бургаски регион. Калкулатор за цена, който докара над 50 запитвания.",
@@ -97,7 +98,7 @@ export const caseStudies: CaseStudy[] = [
       author: "Gutter Matter",
     },
     coverImage: gutterMatterCover,
-    gallery: [gutterMatterSite, gutterMatter1, gutterMatter2],
+    gallery: [gutterMatter1, gutterMatter2, gutterMatter3],
     seoTitle: "Уебсайт за услуга по почистване на улуци — Gutter Matter",
     metaDescription:
       "Уебсайт за Gutter Matter — услуга за почистване на улуци в Тънбридж Уелс, Великобритания. Контактна форма, която докара 10+ запитвания.",
@@ -132,7 +133,7 @@ export const caseStudies: CaseStudy[] = [
       author: "Иван Русев",
     },
     coverImage: ivanRusevCover,
-    gallery: [ivanRusev1, ivanRusev2, ivanRusev3],
+    gallery: [ivanRusev1, ivanRusev2, ivanRusev3, ivanRusev4],
     seoTitle: "Личен сайт за спортист — Иван Русев",
     metaDescription:
       "Личен сайт за Иван Русев — downhill колоездач. Резултати от състезания, спонсорска страница и галерия, довели до нов спонсор.",
