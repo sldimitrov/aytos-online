@@ -11,8 +11,16 @@ import ivanRusev1 from "@/assets/case-studies/ivan-rusev-1.png";
 import ivanRusev2 from "@/assets/case-studies/ivan-rusev-2.png";
 import ivanRusev3 from "@/assets/case-studies/ivan-rusev-3.png";
 import ivanRusev4 from "@/assets/case-studies/ivan-rusev-4.png";
+import niksunaCover from "@/assets/case-studies/niksuna-cover.png";
+import niksuna1 from "@/assets/case-studies/niksuna-1.png";
+import niksuna2 from "@/assets/case-studies/niksuna-2.png";
+import niksuna3 from "@/assets/case-studies/niksuna-3.png";
+import niksuna4 from "@/assets/case-studies/niksuna-4.png";
+import niksuna5 from "@/assets/case-studies/niksuna-5.png";
 
 export type Testimonial = { status: "tbd" } | { status: "ready"; quote: string; author: string };
+
+export type Result = { status: "tbd" } | { status: "ready"; stat: string; description: string };
 
 export interface CaseStudy {
   slug: string;
@@ -23,7 +31,7 @@ export interface CaseStudy {
   cardResult: string;
   problem: string;
   solution: string[];
-  result: { stat: string; description: string };
+  result: Result;
   testimonial: Testimonial;
   coverImage: string;
   gallery: string[];
@@ -52,6 +60,7 @@ export const caseStudies: CaseStudy[] = [
       "Настройка на Google Business Profile",
     ],
     result: {
+      status: "ready",
       stat: "50+ лийда",
       description:
         "Калкулаторът генерира над 50 запитвания, всяко от които е последвано с обаждане. Посетителите вече разглеждат страницата с проекти преди да се свържат — поведение, което не съществуваше, докато присъствието им бе само във Facebook.",
@@ -88,6 +97,7 @@ export const caseStudies: CaseStudy[] = [
       "Страници с условия и политики на услугата",
     ],
     result: {
+      status: "ready",
       stat: "10+ запитвания",
       description: "Досега сайтът е генерирал над 10 директни запитвания от нови клиенти.",
     },
@@ -123,6 +133,7 @@ export const caseStudies: CaseStudy[] = [
       "Фото галерия от писти, тренировки и състезания",
     ],
     result: {
+      status: "ready",
       stat: "1 нов спонсор",
       description: "Спечели нов спонсор в периода след пускането на сайта.",
     },
@@ -141,6 +152,35 @@ export const caseStudies: CaseStudy[] = [
       "Иван Русев на зимно състезание по колоездене",
       "Иван Русев със спортния директор на UAE Team Emirates Mauro Gianetti",
       "Оборудване и рама на downhill велосипед на Иван Русев",
+    ],
+  },
+  {
+    slug: "niksuna-autolab",
+    name: "Niksuna's AutoLab",
+    category: "Фолиране и претапициране на автомобили",
+    clientType: "paid",
+    url: "https://www.niksuna-autolab.com/",
+    cardResult: "Нова галерия с проекти и запитване на стъпки",
+    problem:
+      "Преди сайта клиентите на Niksuna's AutoLab виждаха завършените автомобили основно в Instagram — без обособена галерия по вид услуга и без лесен начин да оставят запитване извън директно съобщение.",
+    solution: [
+      "Галерия със завършени автомобили, филтрируема по услуга — фолиране на стъкла, PPF, претапициране, chrome delete, полиране на фарове",
+      "Административен панел за самостоятелно добавяне и управление на снимки в галерията",
+      "SEO оптимизация и настройка на Google Business Profile за по-добра видимост в Google",
+      "Многостъпкова форма за запитване, която насочва клиента към точната услуга",
+      "Секция „Защо да изберете нас“, която изгражда доверие преди първия разговор",
+    ],
+    result: { status: "tbd" },
+    testimonial: { status: "tbd" },
+    coverImage: niksunaCover,
+    gallery: [niksuna1, niksuna2, niksuna3, niksuna4, niksuna5],
+    seoTitle: "Уебсайт за автосервиз — Niksuna's AutoLab",
+    metaDescription:
+      "Уебсайт за Niksuna's AutoLab — фолиране на автостъкла, PPF защита и претапициране в Айтос. Галерия с завършени автомобили и запитване на стъпки.",
+    galleryAlt: [
+      "Претапициран таван на автомобил от Niksuna's AutoLab",
+      "Фолирани автостъкла на автомобил от Niksuna's AutoLab",
+      "Полиран фар на автомобил от Niksuna's AutoLab",
     ],
   },
 ];

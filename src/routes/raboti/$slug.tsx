@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, CheckCircle2, ExternalLink, MessageCircleMore } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Clock, ExternalLink, MessageCircleMore } from "lucide-react";
 import { caseStudies, getCaseStudyBySlug } from "@/data";
 
 export const Route = createFileRoute("/raboti/$slug")({
@@ -126,12 +126,23 @@ function CaseStudyPage() {
       <section className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl rounded-3xl border border-border bg-card p-8 sm:p-10">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">Резултатът</p>
-          <p className="mt-3 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            {caseStudy.result.stat}
-          </p>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            {caseStudy.result.description}
-          </p>
+          {caseStudy.result.status === "ready" ? (
+            <>
+              <p className="mt-3 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+                {caseStudy.result.stat}
+              </p>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                {caseStudy.result.description}
+              </p>
+            </>
+          ) : (
+            <div className="mt-4 flex items-center gap-3 text-muted-foreground">
+              <Clock className="h-5 w-5 shrink-0" />
+              <p className="text-base font-medium">
+                Все още е рано за резултати — ще добавим цифрите тук, щом ги видим.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
