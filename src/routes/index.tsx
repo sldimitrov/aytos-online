@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import emailjs from "@emailjs/browser";
 import { useEffect, useState } from "react";
 
 import {
@@ -11,19 +10,16 @@ import {
   RefreshCw,
   Star,
   Users,
-  MapPin,
-  Phone,
-  Mail,
   Instagram,
   ArrowRight,
   Menu,
   X,
-  CheckCircle2,
   MessageCircle,
 } from "lucide-react";
 
 import { navLinks, problemCards, services } from "@/data";
 import About from "@/components/base/About/About.tsx";
+import Contact from "@/components/base/Contact/Contact.tsx";
 import FAQ from "@/components/base/FAQ/FAQ.tsx";
 import Portfolio from "@/components/base/Portfolio/Portfolio.tsx";
 import Problem from "@/components/base/Problem/Problem.tsx";
@@ -56,84 +52,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    business: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [showConsultPopup, setShowConsultPopup] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowConsultPopup(true), 4000);
     return () => clearTimeout(timer);
   }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    setError(null);
-
-    const serviceId = import.meta.env["VITE_EMAILJS_SERVICE_ID"];
-    const templateId = import.meta.env["VITE_EMAILJS_TEMPLATE_ID"];
-    const confirmationTemplateId = import.meta.env["VITE_EMAILJS_CONFIRMATION_TEMPLATE_ID"];
-    const publicKey = import.meta.env["VITE_EMAILJS_PUBLIC_KEY"];
-
-    if (!serviceId || !templateId || !publicKey) {
-      setError("Имейл услугата не е конфигурирана.");
-      setSending(false);
-      return;
-    }
-
-    try {
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formState.name,
-          email: formState.email,
-          reply_to: formState.email,
-          phone: formState.phone,
-          business: formState.business,
-          message: formState.message,
-        },
-        { publicKey },
-      );
-
-      if (confirmationTemplateId) {
-        try {
-          await emailjs.send(
-            serviceId,
-            confirmationTemplateId,
-            {
-              to_name: formState.name,
-              to_email: formState.email,
-              business: formState.business,
-              message: formState.message,
-            },
-            { publicKey },
-          );
-        } catch (confirmationErr) {
-          console.error("Confirmation email failed:", confirmationErr);
-        }
-      }
-
-      setSubmitted(true);
-      setFormState({ name: "", email: "", phone: "", business: "", message: "" });
-    } catch (err) {
-      setError(
-        err instanceof Error && err.message
-          ? err.message
-          : "Съобщението не беше изпратено. Опитайте отново или ни позвънете.",
-      );
-    } finally {
-      setSending(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -244,184 +168,7 @@ function Index() {
       <FAQ />
 
       {/* Contact */}
-      <section id="kontakti" className="px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 lg:grid-cols-2">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-                Контакти
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Пишете ни за безплатна консултация
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Разкажете ни накратко за бизнеса си. Ще ви отговорим до 24 часа.
-              </p>
-
-              <div className="mt-10 space-y-5">
-                <a
-                  href="tel:+359876533802"
-                  className="flex items-center gap-4 text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <div className="inline-flex rounded-full bg-primary/10 p-2.5 text-primary">
-                    <Phone className="h-5 w-5" />
-                  </div>
-                  <span className="font-medium">+359 876 533 802</span>
-                </a>
-                <a
-                  href="mailto:aytosonline@gmail.com"
-                  className="flex items-center gap-4 text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  <div className="inline-flex rounded-full bg-primary/10 p-2.5 text-primary">
-                    <Mail className="h-5 w-5" />
-                  </div>
-                  <span className="font-medium">aytosonline@gmail.com</span>
-                </a>
-                <div className="flex items-center gap-4 text-muted-foreground">
-                  <div className="inline-flex rounded-full bg-primary/10 p-2.5 text-primary">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <span className="font-medium">Айтос, България</span>
-                </div>
-              </div>
-
-              <div className="mt-10 flex gap-4">
-                <a
-                  href="https://instagram.com/aytos.online"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-5 py-2.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-accent"
-                >
-                  <Instagram className="h-4 w-4" />
-                  @aytos.online
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-              {submitted ? (
-                <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="mb-4 inline-flex rounded-full bg-primary/10 p-4 text-primary">
-                    <CheckCircle2 className="h-10 w-10" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-card-foreground">
-                    Благодарим ви за запитването!
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">Ще се свържем с вас до 24 часа.</p>
-                  <button
-                    type="button"
-                    onClick={() => setSubmitted(false)}
-                    className="mt-6 text-sm font-medium text-primary hover:underline"
-                  >
-                    Изпратете ново запитване
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="mb-2 block text-sm font-medium text-card-foreground"
-                    >
-                      Вашето име
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      required
-                      value={formState.name}
-                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      placeholder="Иван Иванов"
-                    />
-                  </div>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="mb-2 block text-sm font-medium text-card-foreground"
-                      >
-                        Имейл
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        required
-                        value={formState.email}
-                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                        className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                        placeholder="ivan@example.com"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="phone"
-                        className="mb-2 block text-sm font-medium text-card-foreground"
-                      >
-                        Телефон <span className="text-muted-foreground">(по избор)</span>
-                      </label>
-                      <input
-                        id="phone"
-                        type="tel"
-                        value={formState.phone}
-                        onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                        className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                        placeholder="+359 88 000 0000"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="business"
-                      className="mb-2 block text-sm font-medium text-card-foreground"
-                    >
-                      Бизнес / дейност
-                    </label>
-                    <input
-                      id="business"
-                      type="text"
-                      required
-                      value={formState.business}
-                      onChange={(e) => setFormState({ ...formState, business: e.target.value })}
-                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      placeholder="Например: кафене, салон, автосервиз"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="mb-2 block text-sm font-medium text-card-foreground"
-                    >
-                      Съобщение
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      required
-                      value={formState.message}
-                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                      className="w-full resize-none rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      placeholder="Разкажете ни накратко какъв сайт търсите..."
-                    />
-                  </div>
-                  {error && (
-                    <p className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive">
-                      {error}
-                    </p>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className="w-full rounded-full bg-primary px-6 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:glow disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    {sending ? "Изпращане..." : "Изпратете запитване"}
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Contact />
 
       {/* Footer */}
       <footer className="border-t border-border px-4 py-10 sm:px-6 lg:px-8">
